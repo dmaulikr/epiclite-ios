@@ -26,6 +26,7 @@
 		126484C518A6C6B900B17282 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1264849D18A6C6B900B17282 /* CoreData.framework */; };
 		126484CD18A6C6B900B17282 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 126484CB18A6C6B900B17282 /* InfoPlist.strings */; };
 		126484CF18A6C6B900B17282 /* EpicliteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 126484CE18A6C6B900B17282 /* EpicliteTests.m */; };
+		126484D918A6C83800B17282 /* 062.png in Resources */ = {isa = PBXBuildFile; fileRef = 126484D818A6C83800B17282 /* 062.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		126484CA18A6C6B900B17282 /* EpicliteTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "EpicliteTests-Info.plist"; sourceTree = "<group>"; };
 		126484CC18A6C6B900B17282 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		126484CE18A6C6B900B17282 /* EpicliteTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EpicliteTests.m; sourceTree = "<group>"; };
+		126484D818A6C83800B17282 /* 062.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 062.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -145,6 +147,7 @@
 			children = (
 				126484A118A6C6B900B17282 /* Epiclite-Info.plist */,
 				126484A218A6C6B900B17282 /* InfoPlist.strings */,
+				126484DA18A6C83D00B17282 /* Images */,
 				126484A518A6C6B900B17282 /* main.m */,
 				126484A718A6C6B900B17282 /* Epiclite-Prefix.pch */,
 			);
@@ -167,6 +170,14 @@
 				126484CB18A6C6B900B17282 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		126484DA18A6C83D00B17282 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				126484D818A6C83800B17282 /* 062.png */,
+			);
+			name = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -246,6 +257,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				126484B018A6C6B900B17282 /* Main_iPad.storyboard in Resources */,
+				126484D918A6C83800B17282 /* 062.png in Resources */,
 				126484BB18A6C6B900B17282 /* Images.xcassets in Resources */,
 				126484AD18A6C6B900B17282 /* Main_iPhone.storyboard in Resources */,
 				126484A418A6C6B900B17282 /* InfoPlist.strings in Resources */,
