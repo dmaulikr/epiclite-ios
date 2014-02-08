@@ -14,7 +14,8 @@
 
 @property (nonatomic, retain) IBOutlet UIButton *mainButton;
 @property (nonatomic, retain) IBOutlet NSNumber *rightPosition;
-
+@property (nonatomic, retain)  UITextField *eventTitle;
+@property (nonatomic, retain) UIDatePicker *timePicker;
 
 @end
 
@@ -31,6 +32,13 @@
                                                  name:@"ContactAccessGrantedNotification"
                                                object:nil];
 
+    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapAction:)];
+    [self.view addGestureRecognizer:tapRecognizer];
+
+}
+
+- (void)tapAction:(UITapGestureRecognizer*)sender{
+    
 }
 
 
@@ -63,6 +71,34 @@
 
 }
 
+-(void)pickerDone {
+    [self.timePicker setHidden:YES];
+}
+
+
+-(void)showTimePicker {
+    [self.eventTitle resignFirstResponder];
+    if (!self.timePicker) {
+        self.timePicker = [[UIDatePicker alloc] initWithFrame:CGRectMake(0, 260, 300, 200)];
+        UIButton *doneButton = [UIButton buttonWithType:UIButtonTypeCustom];
+        [doneButton setTitle:@"Save" forState:UIControlStateNormal];
+        [[doneButton titleLabel] setFont:[UIFont fontWithName:@"GillSans" size:17]];
+        [doneButton setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [doneButton addTarget:self action:@selector(pickerDone) forControlEvents:UIControlEventTouchUpInside];
+        [doneButton setFrame:CGRectMake(260, 2, 50, 30)];
+        doneButton.layer.borderColor = [UIColor grayColor].CGColor;
+        doneButton.layer.borderWidth = 0.5;
+        doneButton.layer.cornerRadius = 6;
+        [self.view addSubview:self.timePicker];
+        [self.view addSubview:doneButton];
+    }
+    [self.timePicker setDatePickerMode:UIDatePickerModeDateAndTime];
+    [self.timePicker setBackgroundColor:[UIColor whiteColor]];
+    [self.timePicker setHidden:NO];
+    
+}
+
+
 -(void)flipPhotos {
     dispatch_async(dispatch_get_main_queue(), ^{
         
@@ -73,20 +109,21 @@
     
 }
 
+
 - (void) receiveTestNotification:(NSNotification *) notification
 {
     NSLog(@"blah");
-    UIView *backgroundview = [[UIView alloc] initWithFrame:CGRectMake(10, 100, 300, 200)];
+    UIView *backgroundview = [[UIView alloc] initWithFrame:CGRectMake(10, 40, 300, 200)];
     backgroundview.layer.borderColor = [UIColor grayColor].CGColor;
     backgroundview.layer.borderWidth = 0.5;
     [backgroundview setBackgroundColor:[UIColor whiteColor]];
     [self.view addSubview:backgroundview];
     
-    UITextField *title = [[UITextField alloc] initWithFrame:CGRectMake(20, 6, 280, 30)];
-    title.placeholder = @"Epic Title";
-    [title setFont:[UIFont fontWithName:@"GillSans" size:15]];
-    [backgroundview addSubview:title];
-    [title becomeFirstResponder];
+    self.eventTitle = [[UITextField alloc] initWithFrame:CGRectMake(20, 6, 280, 30)];
+    self.eventTitle.placeholder = @"Title";
+    [self.eventTitle setFont:[UIFont fontWithName:@"GillSans" size:15]];
+    [backgroundview addSubview:self.eventTitle];
+    [self.eventTitle becomeFirstResponder];
     
     UIView *line1 = [[UIView alloc] initWithFrame:CGRectMake(0, 40, 300, 1)];
         line1.layer.borderColor = [UIColor lightGrayColor].CGColor;
@@ -101,6 +138,7 @@
     [time setTitle:@"5 Mar 12:33 pm" forState:UIControlStateNormal];
     [time setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
     [[time titleLabel] setFont:[UIFont fontWithName:@"GillSans" size:15]];
+    [time addTarget:self action:@selector(showTimePicker) forControlEvents:UIControlEventTouchUpInside];
     [backgroundview addSubview:time];
 
 
