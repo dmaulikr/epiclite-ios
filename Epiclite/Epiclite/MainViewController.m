@@ -7,6 +7,8 @@
 //
 
 #import "MainViewController.h"
+#import "QuartzCore/QuartzCore.h"
+
 
 @interface MainViewController ()
 
@@ -24,7 +26,11 @@
     [self.mainButton addTarget:self action:@selector(finishedDragging:withEvent:)
                     forControlEvents:UIControlEventTouchDragExit];
     self.rightPosition = [NSNumber numberWithBool:NO];
-    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(receiveTestNotification:)
+                                                 name:@"ContactAccessGrantedNotification"
+                                               object:nil];
+
 }
 
 
@@ -48,13 +54,63 @@
     
     if (!self.rightPosition.boolValue) {
         self.rightPosition = [NSNumber numberWithBool:YES];
-
     }
     else {
         self.rightPosition = [NSNumber numberWithBool:NO];
-
     }
+
+    [self performSelector:@selector(flipPhotos) withObject:nil afterDelay:0.4];
+
 }
+
+-(void)flipPhotos {
+    dispatch_async(dispatch_get_main_queue(), ^{
+        
+        [[NSNotificationCenter defaultCenter]
+         postNotificationName:@"ContactAccessGrantedNotification"
+         object:self];
+    });
+    
+}
+
+- (void) receiveTestNotification:(NSNotification *) notification
+{
+    NSLog(@"blah");
+    UIView *backgroundview = [[UIView alloc] initWithFrame:CGRectMake(10, 100, 300, 200)];
+    backgroundview.layer.borderColor = [UIColor grayColor].CGColor;
+    backgroundview.layer.borderWidth = 0.5;
+    [backgroundview setBackgroundColor:[UIColor whiteColor]];
+    [self.view addSubview:backgroundview];
+    
+    UITextField *title = [[UITextField alloc] initWithFrame:CGRectMake(20, 6, 280, 30)];
+    title.placeholder = @"Epic Title";
+    [title setFont:[UIFont fontWithName:@"GillSans" size:15]];
+    [backgroundview addSubview:title];
+    [title becomeFirstResponder];
+    
+    UIView *line1 = [[UIView alloc] initWithFrame:CGRectMake(0, 40, 300, 1)];
+        line1.layer.borderColor = [UIColor lightGrayColor].CGColor;
+        line1.layer.borderWidth = 0.25;
+    [backgroundview addSubview:line1];
+    
+    UIImageView *clock = [[UIImageView alloc] initWithFrame:CGRectMake(20, 45, 30, 30)];
+    [clock setImage:[UIImage imageNamed:@"015"]];
+    [backgroundview addSubview:clock];
+    
+    UIButton *time = [[UIButton alloc] initWithFrame:CGRectMake(60, 45, 100, 30)];
+    [time setTitle:@"5 Mar 12:33 pm" forState:UIControlStateNormal];
+    [time setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+    [[time titleLabel] setFont:[UIFont fontWithName:@"GillSans" size:15]];
+    [backgroundview addSubview:time];
+
+
+    UIView *line2 = [[UIView alloc] initWithFrame:CGRectMake(0, 80, 300, 1)];
+    line2.layer.borderColor = [UIColor lightGrayColor].CGColor;
+    line2.layer.borderWidth = 0.25;
+    [backgroundview addSubview:line2];
+}
+
+
 
 - (void)didReceiveMemoryWarning
 {
