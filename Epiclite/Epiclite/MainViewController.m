@@ -10,6 +10,10 @@
 
 @interface MainViewController ()
 
+@property (nonatomic, retain) IBOutlet UIButton *mainButton;
+@property (nonatomic, retain) IBOutlet NSNumber *rightPosition;
+
+
 @end
 
 @implementation MainViewController
@@ -17,7 +21,33 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+    [self.mainButton addTarget:self action:@selector(finishedDragging:withEvent:)
+                    forControlEvents:UIControlEventTouchDragExit];
+    self.rightPosition = [NSNumber numberWithBool:NO];
+    
+}
+
+
+
+- (void)finishedDragging:(UIButton *)button withEvent:(UIEvent *)event {
+    
+    UIControl *control = button;
+    
+    if (!self.rightPosition.boolValue) {
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationDuration:0.3];
+        control.center = CGPointMake(270, 533);
+        [UIView commitAnimations];
+        self.rightPosition = [NSNumber numberWithBool:YES];
+    }
+    else {
+        [UIView beginAnimations:nil context:NULL];
+        [UIView setAnimationDuration:0.3];
+        control.center = CGPointMake(40, 533);
+        [UIView commitAnimations];
+        self.rightPosition = [NSNumber numberWithBool:NO];
+    }
+    
 }
 
 - (void)didReceiveMemoryWarning
