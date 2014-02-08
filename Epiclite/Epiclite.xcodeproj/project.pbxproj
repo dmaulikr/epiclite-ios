@@ -27,6 +27,7 @@
 		126484CD18A6C6B900B17282 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 126484CB18A6C6B900B17282 /* InfoPlist.strings */; };
 		126484CF18A6C6B900B17282 /* EpicliteTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 126484CE18A6C6B900B17282 /* EpicliteTests.m */; };
 		126484D918A6C83800B17282 /* 062.png in Resources */ = {isa = PBXBuildFile; fileRef = 126484D818A6C83800B17282 /* 062.png */; };
+		126484DC18A6CE0900B17282 /* 039.png in Resources */ = {isa = PBXBuildFile; fileRef = 126484DB18A6CE0900B17282 /* 039.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 		126484CC18A6C6B900B17282 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		126484CE18A6C6B900B17282 /* EpicliteTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = EpicliteTests.m; sourceTree = "<group>"; };
 		126484D818A6C83800B17282 /* 062.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 062.png; sourceTree = "<group>"; };
+		126484DB18A6CE0900B17282 /* 039.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 039.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -176,6 +178,7 @@
 			isa = PBXGroup;
 			children = (
 				126484D818A6C83800B17282 /* 062.png */,
+				126484DB18A6CE0900B17282 /* 039.png */,
 			);
 			name = Images;
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				126484DC18A6CE0900B17282 /* 039.png in Resources */,
 				126484B018A6C6B900B17282 /* Main_iPad.storyboard in Resources */,
 				126484D918A6C83800B17282 /* 062.png in Resources */,
 				126484BB18A6C6B900B17282 /* Images.xcassets in Resources */,
